@@ -6,6 +6,7 @@ export type TBlog = {
   shortDescription: string;
   readTime: string;
   content: string;
+  tags: string[];
   createdAt?: Date;
   updatedAt?: Date;
 };

@@ -17,6 +17,6 @@ export default {
   razorpay_api_key: process.env.RAZORPAY_API_KEY,
   razorpay_api_secret: process.env.RAZORPAY_API_SECRET,
   payment_redirect_url: process.env.PAYMENT_REDIRECT_URL,
-  smtp_email: process.env.SMTP_USER,
-  smtp_pass: process.env.SMTP_PASS
+  // smtp_email: process.env.SMTP_USER,
+  // smtp_pass: process.env.SMTP_PASS
 };

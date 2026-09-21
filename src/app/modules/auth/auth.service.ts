@@ -4,7 +4,6 @@ import { TLoginAuth, TUser } from "./auth.interface";
 import jwt, { JwtPayload } from "jsonwebtoken";
 import config from "../../config";
 import { User } from "./auth.model";
-import { sendEmail } from "../../utils/sendEmail";
 import bcrypt from "bcrypt";
 import AppError from "./../../errors/AppError";
 import { createToken } from "./auth.utils";
@@ -137,8 +136,9 @@ const forgetPassword = async (email: string) => {
   );
 
   const resetLink = `${config.reset_password_ui_url}/reset-password?email=${user?.email}&token=${resetToken}`;
+  console.log(resetLink);
 
-  await sendEmail(user?.email, "Reset your password", resetLink);
+  // await sendEmail(user?.email, "Reset your password", resetLink);
 };
 
 const resetPassword = async (

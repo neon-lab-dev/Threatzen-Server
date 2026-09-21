@@ -34,6 +34,10 @@ const BlogSchema = new Schema<TBlog>(
       type: String,
       required: true,
     },
+    tags : {
+      type: [String],
+      required: true
+    }
   },
   {
     timestamps: true,

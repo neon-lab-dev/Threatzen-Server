@@ -18,7 +18,6 @@ const http_status_1 = __importDefault(require("http-status"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const config_1 = __importDefault(require("../../config"));
 const auth_model_1 = require("./auth.model");
-const sendEmail_1 = require("../../utils/sendEmail");
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const AppError_1 = __importDefault(require("./../../errors/AppError"));
 const auth_utils_1 = require("./auth.utils");
@@ -102,7 +101,8 @@ const forgetPassword = (email) => __awaiter(void 0, void 0, void 0, function* ()
     };
     const resetToken = (0, auth_utils_1.createToken)(jwtpayload, config_1.default.jwt_access_secret, "10m");
     const resetLink = `${config_1.default.reset_password_ui_url}/reset-password?email=${user === null || user === void 0 ? void 0 : user.email}&token=${resetToken}`;
-    yield (0, sendEmail_1.sendEmail)(user === null || user === void 0 ? void 0 : user.email, "Reset your password", resetLink);
+    console.log(resetLink);
+    // await sendEmail(user?.email, "Reset your password", resetLink);
 });
 const resetPassword = (payload, token) => __awaiter(void 0, void 0, void 0, function* () {
     const user = yield auth_model_1.User.isUserExists(payload === null || payload === void 0 ? void 0 : payload.email);
