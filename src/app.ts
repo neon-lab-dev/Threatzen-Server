@@ -14,7 +14,7 @@ app.use(cookieParser());
 app.use(express.json());
 
 // app.use(express.static("./uploads"));
-app.use(cors({ origin: ['http://localhost:5173', 'https://threatzen.in'], credentials: true }));
+app.use(cors({ origin: ['http://localhost:5173', 'https://threatzen.in', 'https://www.threatzen.in'], credentials: true }));
 
 // Root route
 app.get('/', (req, res) => {
