@@ -29,6 +29,7 @@ const BlogSchema = new Schema<TBlog>(
     category: {
       type: String,
       required: true,
+      trim: true,
     },
     shortDescription: {
       type: String,

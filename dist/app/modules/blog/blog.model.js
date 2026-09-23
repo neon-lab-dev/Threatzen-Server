@@ -31,6 +31,7 @@ const BlogSchema = new mongoose_1.Schema({
     category: {
         type: String,
         required: true,
+        trim: true,
     },
     shortDescription: {
         type: String,
