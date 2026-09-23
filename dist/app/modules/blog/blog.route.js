@@ -6,8 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.BlogRoutes = void 0;
 const express_1 = __importDefault(require("express"));
 const blog_controller_1 = require("./blog.controller");
-const auth_1 = __importDefault(require("../../middlewares/auth"));
-const auth_constannts_1 = require("../auth/auth.constannts");
+// import auth from "../../middlewares/auth";
+// import { UserRole } from "../auth/auth.constannts";
 const multer_config_1 = require("../../config/multer.config");
 const router = express_1.default.Router();
 // Add Blog (Admin / Moderator)
@@ -20,7 +20,11 @@ router.get("/", blog_controller_1.BlogControllers.getAllBlogs);
 router.get("/:blogId", blog_controller_1.BlogControllers.getSingleBlogById);
 router.get("/slug/:slug", blog_controller_1.BlogControllers.getSingleBlogBySlug);
 // Update Blog
-router.put("/update/:blogId", (0, auth_1.default)(auth_constannts_1.UserRole.admin, auth_constannts_1.UserRole.moderator), multer_config_1.multerUpload.single("file"), blog_controller_1.BlogControllers.updateBlog);
+router.put("/update/:blogId", 
+// auth(UserRole.admin, UserRole.moderator),
+multer_config_1.multerUpload.single("file"), blog_controller_1.BlogControllers.updateBlog);
 // Delete Blog
-router.delete("/delete/:blogId", (0, auth_1.default)(auth_constannts_1.UserRole.admin, auth_constannts_1.UserRole.moderator), blog_controller_1.BlogControllers.deleteBlog);
+router.delete("/delete/:blogId", 
+// auth(UserRole.admin, UserRole.moderator),
+blog_controller_1.BlogControllers.deleteBlog);
 exports.BlogRoutes = router;
