@@ -45,9 +45,8 @@ const BlogSchema = new Schema<TBlog>(
   }
 );
 
-// ✅ HOOK MUST COME BEFORE MODEL CREATION
 BlogSchema.pre("save", function (next) {
-  if (this.isModified("title")) {
+  if (!this.slug && this.isModified("title")) {
     this.slug = slugify(this.title, {
       lower: true,
       strict: true,

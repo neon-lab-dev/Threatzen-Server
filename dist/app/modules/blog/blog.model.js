@@ -44,9 +44,8 @@ const BlogSchema = new mongoose_1.Schema({
 }, {
     timestamps: true,
 });
-// ✅ HOOK MUST COME BEFORE MODEL CREATION
 BlogSchema.pre("save", function (next) {
-    if (this.isModified("title")) {
+    if (!this.slug && this.isModified("title")) {
         this.slug = (0, slugify_1.default)(this.title, {
             lower: true,
             strict: true,
